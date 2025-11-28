@@ -129,6 +129,7 @@ async function fetchAllSpaces() {
 
 			try {
 				const spaceInfo = await fetchSpace(space.id);
+				console.log(`Processed space: ${spaceInfo.name} (ID: ${spaceInfo.id})`);
 
 				// Apply error corrections
 				if (MISTAKES[spaceInfo.id]) {
