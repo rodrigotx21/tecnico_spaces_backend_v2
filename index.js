@@ -189,8 +189,9 @@ async function saveDataToCache(data) {
  */
 async function loadDataFromCache() {
 	try {
-		const data = await fs.readFile(CACHE_FILE, 'utf-8');
-		return JSON.parse(data);
+		//const data = await fs.readFile(CACHE_FILE, 'utf-8');
+		//return JSON.parse(data);
+		return CACHE;
 	} catch (error) {
 		console.error('Error loading data from cache:', error.message);
 		return null;
