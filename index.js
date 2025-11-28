@@ -12,7 +12,8 @@ const PORT = process.env.PORT || 3000;
 
 const API_URL = 'https://fenix.tecnico.ulisboa.pt/tecnico-api/v2';
 const BASE_URL = `${API_URL}/spaces`;
-const CACHE_FILE = path.join(__dirname, 'data.json');
+//const CACHE_FILE = path.join(__dirname, 'data.json');
+var CACHE = []
 
 // Middleware
 app.use(cors({
@@ -203,7 +204,8 @@ async function updateCache() {
 	console.log('Updating cache...');
 	const allSpaces = await fetchAllSpaces();
 	if (allSpaces) {
-		await saveDataToCache(allSpaces);
+		//await saveDataToCache(allSpaces);
+		CACHE = allSpaces;
 		console.log('Cache updated successfully!');
 	} else {
 		console.error('Failed to update cache');
@@ -212,7 +214,8 @@ async function updateCache() {
 
 // Initialize cache on startup
 (async () => {
-	const cacheExists = await fs.access(CACHE_FILE).then(() => true).catch(() => false);
+	//const cacheExists = await fs.access(CACHE_FILE).then(() => true).catch(() => false);
+	const cacheExists = CACHE.length > 0;
 	if (!cacheExists) {
 		console.log('Cache file not found. Creating initial cache...');
 		await updateCache();
