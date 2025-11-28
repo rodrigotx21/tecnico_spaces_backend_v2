@@ -364,6 +364,8 @@ app.get('/spaces/:id', async (req, res) => {
 		res.status(500).json({ error: 'Failed to fetch space' });
 	}
 });
+*
+*/
 
 // Start server
 app.listen(PORT, () => {
@@ -371,5 +373,3 @@ app.listen(PORT, () => {
 	console.log(`📍 http://localhost:${PORT}`);
 	console.log(`📊 API endpoints available at /api/!*`);
 });
-
-*/
